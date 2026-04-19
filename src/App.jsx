@@ -25,17 +25,18 @@ function App() {
   }, []);
 
   return (
+
     <div className="app-container">
       <NavBar isConnected={isConnected} />
-      
+
       <main className="main-content">
-        <FloorPlan 
-          room1Light={room1Light} 
+        <FloorPlan
+          room1Light={room1Light}
           setRoom1Light={setRoom1Light}
           room2Light={room2Light}
           setRoom2Light={setRoom2Light}
         />
-        <UniversalToggle 
+        <UniversalToggle
           handleUniversalToggle={handleUniversalToggle}
           isAllOn={isAllOn}
         />
