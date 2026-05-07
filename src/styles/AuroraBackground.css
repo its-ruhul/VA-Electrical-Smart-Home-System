@@ -1,0 +1,79 @@
+.aurora-bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  overflow: hidden;
+  background-color: #f5f7fa;
+  /* Soft light background matching the theme */
+  pointer-events: none;
+}
+
+.aurora-bg-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-bg-gradient {
+  --white: #ffffff;
+  --transparent: rgba(255, 255, 255, 0);
+  --aurora: repeating-linear-gradient(100deg,
+      #60a5fa 15%,
+      /* soft blue */
+      #c084fc 20%,
+      /* soft purple */
+      #93c5fd 25%,
+      /* lighter blue */
+      #e879f9 25%,
+      /* soft pink */
+      #818cf8 35%
+      /* soft indigo */
+    );
+  --white-gradient: repeating-linear-gradient(100deg,
+      var(--white) 0%,
+      var(--white) 7%,
+      var(--transparent) 10%,
+      var(--transparent) 12%,
+      var(--white) 16%);
+
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: var(--white-gradient), var(--aurora);
+  background-size: 200% 200%;
+  background-position: 50% 50%;
+  filter: blur(40px);
+  opacity: 0.3;
+  /* Soften the effect */
+  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 10%, transparent 70%);
+  mask-image: radial-gradient(ellipse at 50% 0%, black 10%, transparent 70%);
+  animation: aurora-animate 30s linear infinite;
+  transform: translateZ(0);
+  will-change: background-position;
+}
+
+.aurora-bg-gradient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--white-gradient), var(--aurora);
+  background-size: 200% 200%;
+  mix-blend-mode: overlay;
+  animation: aurora-animate 40s linear infinite reverse;
+}
+
+@keyframes aurora-animate {
+  0% {
+    background-position: 50% 50%, 50% 50%;
+  }
+
+  100% {
+    background-position: 350% 50%, 350% 50%;
+  }
+}

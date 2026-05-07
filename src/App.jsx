@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import NavBar from './components/NavBar';
 import FloorPlan from './components/FloorPlan';
 import UniversalToggle from './components/UniversalToggle';
+import { AuroraBackground } from './components/AuroraBackground';
 import './index.css';
 
 function App() {
@@ -25,22 +26,24 @@ function App() {
   }, []);
 
   return (
-    <div className="app-container">
-      <NavBar isConnected={isConnected} />
-      
-      <main className="main-content">
-        <FloorPlan 
-          room1Light={room1Light} 
-          setRoom1Light={setRoom1Light}
-          room2Light={room2Light}
-          setRoom2Light={setRoom2Light}
-        />
-        <UniversalToggle 
-          handleUniversalToggle={handleUniversalToggle}
-          isAllOn={isAllOn}
-        />
-      </main>
-    </div>
+    <AuroraBackground>
+      <div className="app-container">
+        <NavBar isConnected={isConnected} />
+        
+        <main className="main-content">
+          <FloorPlan 
+            room1Light={room1Light} 
+            setRoom1Light={setRoom1Light}
+            room2Light={room2Light}
+            setRoom2Light={setRoom2Light}
+          />
+          <UniversalToggle 
+            handleUniversalToggle={handleUniversalToggle}
+            isAllOn={isAllOn}
+          />
+        </main>
+      </div>
+    </AuroraBackground>
   );
 }
 
